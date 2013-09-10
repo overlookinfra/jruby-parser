@@ -21,9 +21,9 @@
 	</properties>
 
 	<scm>
-		<connection>scm:git:git@github.com:cloudsmith/jruby-parser.git</connection>
-		<developerConnection>scm:git:git@github.com:cloudsmith/jruby-parser.git</developerConnection>
-		<url>https://github.com/cloudsmith/jruby-parser</url>
+		<connection>scm:git:git@github.com:puppetlabs/jruby-parser.git</connection>
+		<developerConnection>scm:git:git@github.com:puppetlabs/jruby-parser.git</developerConnection>
+		<url>https://github.com/puppetlabs/jruby-parser</url>
 	</scm>
 
 	<licenses>
