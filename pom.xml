@@ -47,35 +47,35 @@
 
 	<distributionManagement>
 		<repository>
-			<id>cloudsmith-releases</id>
-			<name>Cloudsmith Release Repository</name>
-			<url>https://am0.cloudsmith.com/nexus/content/repositories/releases/</url>
+			<id>puppetlabs</id>
+			<name>Puppet Labs Release Repository</name>
+			<url>http://nexus.delivery.puppetlabs.net/content/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
-			<id>cloudsmith-snapshots</id>
-			<name>Cloudsmith Snapshot Repository</name>
-			<url>https://am0.cloudsmith.com/nexus/content/repositories/snapshots/</url>
+			<id>puppetlabs</id>
+			<name>Puppet Labs Snapshot Repository</name>
+			<url>http://nexus.delivery.puppetlabs.net/content/repositories/snapshots/</url>
 		</snapshotRepository>
 		<site>
-			<id>cloudsmith-jruby-site</id>
+			<id>puppetlabs</id>
 			<name>JRuby Maven site</name>
-			<url>dav:https://am0.cloudsmith.com/nexus/content/sites/cloudsmith-jruby-site/</url>
+			<url>http://nexus.delivery.puppetlabs.net/content/sites/puppetlabs-jruby-site/</url>
 		</site>
 	</distributionManagement>
 
 	<repositories>
 		<repository>
-			<id>cloudsmith-snapshots</id>
-			<name>Cloudsmith Snapshot Repository</name>
-			<url>https://am0.cloudsmith.com/nexus/content/repositories/snapshots</url>
+			<id>puppetlabs-snapshots</id>
+			<name>Puppet Labs Snapshot Repository</name>
+			<url>http://nexus.delivery.puppetlabs.net/content/repositories/snapshots/</url>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
 		<repository>
-			<id>cloudsmith-releases</id>
-			<name>Cloudsmith Releases</name>
-			<url>https://am0.cloudsmith.com/nexus/content/repositories/releases</url>
+			<id>puppetlabs-releases</id>
+			<name>Puppet Labs Release Repository</name>
+			<url>http://nexus.delivery.puppetlabs.net/content/repositories/releases/</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
