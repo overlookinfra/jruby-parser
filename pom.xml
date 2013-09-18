@@ -4,7 +4,7 @@
 	<groupId>com.puppetlabs.jruby</groupId>
 	<artifactId>jrubyparser</artifactId>
 	<packaging>jar</packaging>
-	<version>0.3-beta-SNAPSHOT</version>
+	<version>0.3</version>
 	<name>JRuby Parser</name>
 	<description>
     A library to expose exact char-for-char position information of Ruby syntax.
@@ -24,7 +24,8 @@
 		<connection>scm:git:git@github.com:puppetlabs/jruby-parser.git</connection>
 		<developerConnection>scm:git:git@github.com:puppetlabs/jruby-parser.git</developerConnection>
 		<url>https://github.com/puppetlabs/jruby-parser</url>
-	</scm>
+	  <tag>jrubyparser-0.3</tag>
+  </scm>
 
 	<licenses>
 		<license>
