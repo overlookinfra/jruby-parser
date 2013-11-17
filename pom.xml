@@ -18,14 +18,23 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<nexusServer>http://geppetto-nexus.puppetlabs.com</nexusServer>
+		<parentSiteURL>${nexusServer}/content/sites/graph-site</parentSiteURL>
 	</properties>
+
+	<organization>
+		<name>Puppet Labs, Inc.</name>
+		<url>http://www.puppetlabs.com</url>
+	</organization>
+
+	<url>${parentSiteURL}</url>
 
 	<scm>
 		<connection>scm:git:git@github.com:puppetlabs/jruby-parser.git</connection>
 		<developerConnection>scm:git:git@github.com:puppetlabs/jruby-parser.git</developerConnection>
 		<url>https://github.com/puppetlabs/jruby-parser</url>
-	  <tag>HEAD</tag>
-  </scm>
+		<tag>HEAD</tag>
+	</scm>
 
 	<licenses>
 		<license>
@@ -50,17 +59,17 @@
 		<repository>
 			<id>puppetlabs</id>
 			<name>Puppet Labs Release Repository</name>
-			<url>http://nexus.delivery.puppetlabs.net/content/repositories/releases/</url>
+			<url>${nexusServer}/content/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
-			<id>puppetlabs</id>
+			<id>puppetlabs-snapshots</id>
 			<name>Puppet Labs Snapshot Repository</name>
-			<url>http://nexus.delivery.puppetlabs.net/content/repositories/snapshots/</url>
+			<url>${nexusServer}/content/repositories/snapshots/</url>
 		</snapshotRepository>
 		<site>
 			<id>puppetlabs</id>
 			<name>JRuby Maven site</name>
-			<url>http://nexus.delivery.puppetlabs.net/content/sites/puppetlabs-jruby-site/</url>
+			<url>${nexusServer}/content/sites/puppetlabs-jruby-site/</url>
 		</site>
 	</distributionManagement>
 
@@ -68,15 +77,15 @@
 		<repository>
 			<id>puppetlabs-snapshots</id>
 			<name>Puppet Labs Snapshot Repository</name>
-			<url>http://nexus.delivery.puppetlabs.net/content/repositories/snapshots/</url>
+			<url>${nexusServer}/content/repositories/snapshots/</url>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
 		<repository>
-			<id>puppetlabs-releases</id>
+			<id>puppetlabs</id>
 			<name>Puppet Labs Release Repository</name>
-			<url>http://nexus.delivery.puppetlabs.net/content/repositories/releases/</url>
+			<url>${nexusServer}/content/repositories/releases/</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
