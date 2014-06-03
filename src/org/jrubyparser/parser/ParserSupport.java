@@ -178,7 +178,7 @@ public class ParserSupport {
 
     public Node arg_blk_pass(Node firstNode, BlockPassNode secondNode) {
         if (secondNode != null) {
-            secondNode.setArgsNode(firstNode);
+            secondNode.setArgs(firstNode);
             secondNode.setPosition(union(firstNode, secondNode));
             return secondNode;
         }
@@ -540,7 +540,7 @@ public class ParserSupport {
                 node = ((BlockNode) node).getLast();
                 break;
             case BEGINNODE:
-                node = ((BeginNode) node).getBodyNode();
+                node = ((BeginNode) node).getBody();
                 break;
             case IFNODE:
                 if (!checkExpression(((IfNode) node).getThenBody())) return false;
@@ -904,7 +904,7 @@ public class ParserSupport {
 
     public Node new_super(Node args, Token operation) {
         if (args != null && args instanceof BlockPassNode) {
-            return new SuperNode(union(operation, args), ((BlockPassNode) args).getArgsNode(), args);
+            return new SuperNode(union(operation, args), ((BlockPassNode) args).getArgs(), args);
         }
         return new SuperNode(operation.getPosition(), args);
     }
@@ -1125,7 +1125,7 @@ public class ParserSupport {
     
     public IterNode new_iter(SourcePosition position, Node vars, StaticScope scope, Node body) {
         if (vars != null && vars instanceof BlockPassNode) {
-            vars = ((BlockPassNode)vars).getArgsNode();
+            vars = ((BlockPassNode)vars).getArgs();
         }
          
         return new IterNode(position, vars, scope, body);
@@ -1257,7 +1257,7 @@ public class ParserSupport {
      public Node arg_append(Node node1, Node node2) {
          if (node1 == null) return new ArrayNode(node2.getPosition(), node2);
          if (node1 instanceof ListNode) return ((ListNode) node1).add(node2);
-         if (node1 instanceof BlockPassNode) return arg_append(((BlockPassNode) node1).getBodyNode(), node2);
+         if (node1 instanceof BlockPassNode) return arg_append(((BlockPassNode) node1).getBody(), node2);
          if (node1 instanceof ArgsPushNode) {
              ArgsPushNode pushNode = (ArgsPushNode) node1;
              Node body = pushNode.getSecondNode();

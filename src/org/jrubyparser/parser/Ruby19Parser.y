@@ -343,14 +343,14 @@ stmt            : kALIAS fitem {
                 }
                 | stmt kWHILE_MOD expr_value {
                     if ($1 != null && $1 instanceof BeginNode) {
-                        $$ = new WhileNode(support.getPosition($1), support.getConditionNode($3), $<BeginNode>1.getBodyNode(), false);
+                        $$ = new WhileNode(support.getPosition($1), support.getConditionNode($3), $<BeginNode>1.getBody(), false);
                     } else {
                         $$ = new WhileNode(support.getPosition($1), support.getConditionNode($3), $1, true);
                     }
                 }
                 | stmt kUNTIL_MOD expr_value {
                     if ($1 != null && $1 instanceof BeginNode) {
-                        $$ = new UntilNode(support.getPosition($1), support.getConditionNode($3), $<BeginNode>1.getBodyNode(), false);
+                        $$ = new UntilNode(support.getPosition($1), support.getConditionNode($3), $<BeginNode>1.getBody(), false);
                     } else {
                         $$ = new UntilNode(support.getPosition($1), support.getConditionNode($3), $1, true);
                     }

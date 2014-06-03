@@ -33,7 +33,6 @@ package org.jrubyparser;
 
 import java.io.IOException;
 import java.io.Reader;
-import org.jrubyparser.IRubyWarnings.ID;
 import org.jrubyparser.ast.Node;
 import org.jrubyparser.lexer.LexerSource;
 import org.jrubyparser.lexer.SyntaxException;
