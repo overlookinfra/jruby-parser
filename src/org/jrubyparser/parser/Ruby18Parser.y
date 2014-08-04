@@ -340,14 +340,14 @@ stmt          : kALIAS fitem {
               }
               | stmt kWHILE_MOD expr_value {
                   if ($1 != null && $1 instanceof BeginNode) {
-                      $$ = new WhileNode(support.getPosition($1), support.getConditionNode($3), $<BeginNode>1.getBodyNode(), false);
+                      $$ = new WhileNode(support.getPosition($1), support.getConditionNode($3), $<BeginNode>1.getBody(), false);
                   } else {
                       $$ = new WhileNode(support.getPosition($1), support.getConditionNode($3), $1, true);
                   }
               }
               | stmt kUNTIL_MOD expr_value {
                   if ($1 != null && $1 instanceof BeginNode) {
-                      $$ = new UntilNode(support.getPosition($1), support.getConditionNode($3), $<BeginNode>1.getBodyNode(), false);
+                      $$ = new UntilNode(support.getPosition($1), support.getConditionNode($3), $<BeginNode>1.getBody(), false);
                   } else {
                       $$ = new UntilNode(support.getPosition($1), support.getConditionNode($3), $1, true);
                   }
@@ -1919,7 +1919,7 @@ none_block_pass: /* none */ {
         Object debugger = null;
         if (configuration.isDebug()) {
             try {
-                Class yyDebugAdapterClass = Class.forName("jay.yydebug.yyDebugAdapter");
+                Class<?> yyDebugAdapterClass = Class.forName("jay.yydebug.yyDebugAdapter");
                 debugger = yyDebugAdapterClass.newInstance();
             } catch (IllegalAccessException iae) {
               // ignore, no debugger present

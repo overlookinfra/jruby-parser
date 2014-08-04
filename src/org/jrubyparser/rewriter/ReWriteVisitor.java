@@ -265,13 +265,13 @@ public class ReWriteVisitor implements NodeVisitor {
         config.setLastPosition(iVisited.getPosition());
     }
 
-    public void visitIter(Iterator iterator) {
+    public void visitIter(Iterator<? extends Node> iterator) {
         while (iterator.hasNext()) {
-            visitNode((Node) iterator.next());
+            visitNode(iterator.next());
         }
     }
 
-    private void visitIterAndSkipFirst(Iterator iterator) {
+    private void visitIterAndSkipFirst(Iterator<? extends Node> iterator) {
         iterator.next();
         visitIter(iterator);
     }
@@ -712,8 +712,8 @@ public class ReWriteVisitor implements NodeVisitor {
         PrintWriter oldOut = config.getOutput();
         config.setOutput(new PrintWriter(writer));
 
-        for (Iterator it = iVisited.childNodes().iterator(); it.hasNext(); ) {
-            factory.createHereDocReWriteVisitor().visitNode((Node) it.next());
+        for (Iterator<Node> it = iVisited.childNodes().iterator(); it.hasNext(); ) {
+            factory.createHereDocReWriteVisitor().visitNode(it.next());
 
             if (it.hasNext()) config.setSkipNextNewline(true);
         }
@@ -937,10 +937,10 @@ public class ReWriteVisitor implements NodeVisitor {
     private void printHashNodeContent(HashNode iVisited) {
         print(config.getFormatHelper().beforeHashContent());
         if (iVisited.getListNode() != null) {
-            for (Iterator it = iVisited.getListNode().childNodes().iterator(); it.hasNext(); ) {
-                visitNode((Node) it.next());
+            for (Iterator<Node> it = iVisited.getListNode().childNodes().iterator(); it.hasNext(); ) {
+                visitNode(it.next());
                 print(config.getFormatHelper().hashAssignment());
-                visitNode((Node) it.next());
+                visitNode(it.next());
 
                 if (it.hasNext()) print(config.getFormatHelper().getListSeparator());
             }
@@ -1545,11 +1545,6 @@ public class ReWriteVisitor implements NodeVisitor {
             default:
                 return null;
         }
-    }
-
-    private boolean needsSuperNodeParentheses(SuperNode n) {
-        return n.getArgs().childNodes().isEmpty() && 
-                config.getSource().charAt(getEndOffset(n)) == '(';
     }
 
     public Object visitSuperNode(SuperNode iVisited) {

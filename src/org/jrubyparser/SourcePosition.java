@@ -194,7 +194,9 @@ public class SourcePosition implements Serializable {
 
     /** For nodes which are added to the AST which are not proper syntactical elements. */
     public static final SourcePosition INVALID_POSITION = new SourcePosition() {
-        @Override
+	private static final long serialVersionUID = 1L;
+
+	@Override
         public String getFile() {
             throw new UnsupportedOperationException("Not supported yet.");
         }

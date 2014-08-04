@@ -577,14 +577,6 @@ public class Lexer {
     public void setWarnings(IRubyWarnings warnings) {
         this.warnings = warnings;
     }
-    
-    private void printState() {
-        if (lex_state == null) {
-            System.out.println("NULL");
-        } else {
-            System.out.println(lex_state);
-        }
-    }
 
     public void setState(LexState state) {
         this.lex_state = state;
@@ -891,13 +883,6 @@ public class Lexer {
         return -1;
     }
     
-    private boolean magicCommentSpecialChar(char c) {
-        switch (c) {
-            case '\'': case '"': case ':': case ';': return true;
-        }
-        return false;
-    }
-    
     private static final String magicString = "([^\\s\'\":;]+)\\s*:\\s*(\"(?:\\\\.|[^\"])*\"|[^\"\\s;]+)[\\s;]*";
     private static final Pattern magicRegexp = Pattern.compile(magicString);
 
@@ -912,7 +897,6 @@ public class Lexer {
         if (end < 0) return false;
 
         // We only use a regex if -*- ... -*- is found.  Not too hot a path?
-        int realSize = magicLine.length();
         Matcher matcher = magicRegexp.matcher(magicLine);
         boolean result = matcher.find(beg);
 
@@ -1123,7 +1107,7 @@ public class Lexer {
     }
 
     // DEBUGGING HELP 
-    private int yylex2() throws IOException {
+    public int yylex2() throws IOException {
         int currentToken = yylex();
         
         printToken(currentToken);
@@ -1243,7 +1227,8 @@ public class Lexer {
                     case EXPR_CLASS: case EXPR_VALUE:
                         getPosition();
                         continue loop;
-                    }
+		    default:
+                   }
 
                     boolean done = false;
                     while(!done) {
@@ -1291,6 +1276,7 @@ public class Lexer {
                 switch (lex_state) {
                 case EXPR_BEG: case EXPR_FNAME: case EXPR_DOT: case EXPR_CLASS:
                     continue loop;
+		default:
                 }
 
                 commandStart = true;
@@ -2673,8 +2659,6 @@ public class Lexer {
         }
     }
 
-    private byte[] mbcBuf = new byte[6];
-
     //FIXME: This seems like it could be more efficient to ensure size in bytelist and then pass
     // in bytelists byte backing store.  This method would look ugly since realSize would need
     // to be tweaked and I don't know how many bytes this codepoint has up front so I would need
@@ -2695,7 +2679,7 @@ public class Lexer {
 
     public void tokenAddMBCFromSrc(int c, CStringBuilder buffer) throws IOException {
         // read bytes for length of character
-        int length = 1; //buffer.getEncoding().length((byte)c);
+        // int length = 1; //buffer.getEncoding().length((byte)c);
         buffer.append((char)c);
 //        for (int off = 0; off < length - 1; off++) {
 //            buffer.append((byte)src.read());

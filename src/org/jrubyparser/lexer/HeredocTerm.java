@@ -212,7 +212,7 @@ public class HeredocTerm extends StrTerm {
 
         @Override
         public boolean equals(Object obj) {
-            if (obj == null && getClass() != obj.getClass()) return false;
+            if (obj == null || getClass() != obj.getClass()) return false;
 
             final MutableTermState other = (MutableTermState) obj;
 

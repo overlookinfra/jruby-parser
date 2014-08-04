@@ -38,7 +38,6 @@ import org.jrubyparser.SourcePosition;
  */
 public class DRegexpNode extends ListNode implements ILiteralNode {
     private RegexpOptions options;
-    private boolean is19;
     
     public DRegexpNode(SourcePosition position, RegexpOptions options) {
         this(position, options, false);
@@ -48,7 +47,6 @@ public class DRegexpNode extends ListNode implements ILiteralNode {
         super(position);
 
         this.options = options;
-        this.is19 = is19;
     }
 
     @Override

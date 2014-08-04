@@ -565,7 +565,9 @@ public class StringTerm extends StrTerm {
     }
 
     public static class UnterminatedStringException extends SyntaxException {
-        public UnterminatedStringException(SourcePosition pos, String message) {
+ 	private static final long serialVersionUID = 1L;
+
+	public UnterminatedStringException(SourcePosition pos, String message) {
             // TODO - get rid of this class now that I have an id? I can switch on normal SyntaxExceptions!
             super(PID.STRING_HITS_EOF, pos, message);
         }
