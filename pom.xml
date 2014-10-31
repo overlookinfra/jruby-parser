@@ -11,130 +11,146 @@
     A library to expose exact char-for-char position information of Ruby syntax.
   </description>
 
-  <issueManagement>
-    <system>JIRA</system>
-    <url>https://github.com/jruby/jruby-parser/issues</url>
-  </issueManagement>
+	<issueManagement>
+		<system>JIRA</system>
+		<url>https://github.com/jruby/jruby-parser/issues</url>
+	</issueManagement>
 
-  <scm>
-    <connection>scm:git:git@github.com:jruby/jruby-parser.git</connection>
-    <developerConnection>scm:git@github.com:jruby/jruby-parser.git</developerConnection>
-    <url>https://github.com/jruby/jruby-parser</url>
-  </scm>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<nexusServer>http://geppetto-nexus.puppetlabs.com</nexusServer>
+		<parentSiteURL>${nexusServer}/content/sites/graph-site</parentSiteURL>
+	</properties>
 
-  <licenses>
-    <license>
-      <name>Common Public License - v 1.0</name>
-      <url>http://www-128.ibm.com/developerworks/library/os-cpl.html</url>
-      <distribution>repo</distribution>
-    </license>
-    <license>
-      <name>GNU General Public License Version 2</name>
-      <url>http://www.gnu.org/copyleft/gpl.html</url>
-      <distribution>repo</distribution>
-    </license>
-    <license>
-      <name>GNU Lesser General Public License Version 2.1</name>
-      <url>http://www.gnu.org/licenses/lgpl.html</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
+	<organization>
+		<name>Puppet Labs, Inc.</name>
+		<url>http://www.puppetlabs.com</url>
+	</organization>
 
-  <distributionManagement>
-    <repository>
-      <id>codehaus-jruby-repository</id>
-      <name>JRuby Central Repository</name>
-      <url>dav:https://dav.codehaus.org/repository/jruby</url>
-    </repository>
-    <snapshotRepository>
-      <id>codehaus-jruby-snapshot-repository</id>
-      <name>JRuby Central Development Repository</name>
-      <url>dav:https://dav.codehaus.org/snapshots.repository/jruby</url>
-    </snapshotRepository>
-    <site>
-      <id>codehaus-jruby-site</id>
-      <name>JRuby Maven site</name>
-      <url>dav:https://dav.codehaus.org/jruby/info</url>
-    </site>
-  </distributionManagement>
+	<url>${parentSiteURL}</url>
 
-  <repositories>
-    <repository>
-      <id>codehaus</id>
-      <name>Codehaus Repository</name>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <url>http://repository.codehaus.org</url>
-    </repository>
-  </repositories>
+	<scm>
+		<connection>scm:git:git@github.com:puppetlabs/jruby-parser.git</connection>
+		<developerConnection>scm:git:git@github.com:puppetlabs/jruby-parser.git</developerConnection>
+		<url>https://github.com/puppetlabs/jruby-parser</url>
+		<tag>HEAD</tag>
+	</scm>
 
-  <developers>
-  </developers>
+	<licenses>
+		<license>
+			<name>Common Public License - v 1.0</name>
+			<url>http://www-128.ibm.com/developerworks/library/os-cpl.html</url>
+			<distribution>repo</distribution>
+		</license>
+		<license>
+			<name>GNU General Public License Version 2</name>
+			<url>http://www.gnu.org/copyleft/gpl.html</url>
+			<distribution>repo</distribution>
+		</license>
+		<license>
+			<name>GNU Lesser General Public License Version 2.1</name>
+			<url>http://www.gnu.org/licenses/lgpl.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
-  <dependencies>
-    <dependency>
-      <groupId>jay</groupId>
-      <artifactId>yydebug</artifactId>
-      <version>0.1</version>
-      <scope>system</scope>
-      <systemPath>${basedir}/lib/yydebug.jar</systemPath>
-    </dependency>
-  </dependencies>
+	<distributionManagement>
+		<repository>
+			<id>puppetlabs</id>
+			<name>Puppet Labs Release Repository</name>
+			<url>${nexusServer}/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>puppetlabs-snapshots</id>
+			<name>Puppet Labs Snapshot Repository</name>
+			<url>${nexusServer}/content/repositories/snapshots/</url>
+		</snapshotRepository>
+		<site>
+			<id>puppetlabs</id>
+			<name>JRuby Maven site</name>
+			<url>${nexusServer}/content/sites/puppetlabs-jruby-site/</url>
+		</site>
+	</distributionManagement>
 
-  <build>
-    <sourceDirectory>src</sourceDirectory>
-    <defaultGoal>package</defaultGoal>
-    <extensions>
-      <extension>
-        <groupId>org.apache.maven.wagon</groupId> 
-        <artifactId>wagon-webdav-jackrabbit</artifactId> 
-        <version>2.1</version> 
-      </extension> 
-    </extensions>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifestFile>MANIFEST.MF</manifestFile>
-          </archive>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+	<repositories>
+		<repository>
+			<id>puppetlabs-snapshots</id>
+			<name>Puppet Labs Snapshot Repository</name>
+			<url>${nexusServer}/content/repositories/snapshots/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>puppetlabs</id>
+			<name>Puppet Labs Release Repository</name>
+			<url>${nexusServer}/content/repositories/releases/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<developers>
+	</developers>
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<testSourceDirectory>test</testSourceDirectory>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav-jackrabbit</artifactId>
+				<version>2.2</version>
+			</extension>
+		</extensions>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<archive>
+						<manifestFile>META-INF/MANIFEST.MF</manifestFile>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

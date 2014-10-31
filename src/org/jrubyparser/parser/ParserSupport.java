@@ -897,7 +897,7 @@ public class ParserSupport {
 
     public Node new_super(Node args, Token operation) {
         if (args != null && args instanceof BlockPassNode) {
-            return new SuperNode(union(operation, args), ((BlockPassNode) args).getArgsNode(), args);
+            return new SuperNode(union(operation, args), ((BlockPassNode) args).getArgs(), args);
         }
         return new SuperNode(operation.getPosition(), args);
     }
@@ -1148,7 +1148,7 @@ public class ParserSupport {
     
     public IterNode new_iter(SourcePosition position, Node vars, StaticScope scope, Node body) {
         if (vars != null && vars instanceof BlockPassNode) {
-            vars = ((BlockPassNode)vars).getArgsNode();
+            vars = ((BlockPassNode)vars).getArgs();
         }
          
         return new IterNode(position, vars, scope, body);
